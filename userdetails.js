@@ -1,20 +1,18 @@
-export default class UserDetails{
- #id;
+import BaseEntity from "./BaseEntity.js";
+export default class UserDetails extends BaseEntity{
  #firstName;
  #familyName;
  #birthYear;
 #address;
  constructor(id,firstName,familyName,birthYear,address){
-  this.#id=id;
+super(id);
   this.#firstName=firstName;
   this.#familyName=familyName;
   this.#birthYear=birthYear;
   this.#address=address;
  }
 
- getId(){
-  return this.#id;
- }
+
  getFirstName(){
   return this.#firstName;
  }
@@ -33,14 +31,27 @@ export default class UserDetails{
  }
 
 
- getUserDetails(){
+ toJSON(){
   return {
-    id:this.#id,
+    id:super.getId(),
     firstName:this.#firstName,
     familyName:this.#familyName,
     birthYear:this.#birthYear,
-    age:this.ageCalculation()
+    age:this.ageCalculation(),
+    dateCreated:super.getDate()
+
   }
+ }
+
+ toString(){
+ return "\nUserDetails"+"\n"+
+ "id: "+ super.getId()+"\n"+
+ "firstName: "+ this.#firstName+"\n"+
+ "familyName: "+ this.#familyName+"\n"+
+ "birthYear: "+ this.#birthYear+"\n"+
+ "age: "+ this.ageCalculation()+"\n"+
+ "dateCreated: "+ super.getDate()+"\n"
+
  }
 
 }

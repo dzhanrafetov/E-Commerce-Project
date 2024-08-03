@@ -1,15 +1,16 @@
-export default class Category{
+import BaseEntity from "./BaseEntity.js";
+
+export default class Category extends BaseEntity{
 #id
 #categoryName
 #advertisements;
+
 constructor(id,categoryName){
-this.#id=id;
+super(id);
 this.#categoryName=categoryName;
 this.#advertisements=[];
 }
-getId(){
-  return this.#id;
-}
+
 getCategoryName(){
   return this.#categoryName;
 }
@@ -20,5 +21,15 @@ addAdvertisement(advertisement){
  this.#advertisements.push(advertisement);
 }
 
-
+toJSON(){
+  return {
+    id:super.getId(),
+    categoryName:this.#categoryName
+  }
+}
+toString(){
+  return "Category"+'\n'+
+          "id: " +super.getId()+"\n"+
+          "name: "+this.#categoryName+"\n"
+}
 }

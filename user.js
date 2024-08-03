@@ -1,21 +1,20 @@
- export default class User {
+import BaseEntity from "./BaseEntity.js";
 
-  #id;
+ export default class User extends BaseEntity{
+
   #username;
   #password;
   #userdetails;
 
 
   constructor(id, username, password) {
-    this.#id = id;
+    super(id);
     this.#username = username;
     this.#password = password;
     this.#userdetails = [];
   }
 
-  getId() {
-    return this.#id;
-  }
+
   getUsername() {
     return this.#username;
   }
@@ -29,11 +28,21 @@
   getUserDetails() {
     return this.#userdetails;
   }
-  getUser() {
+  toString(){
+    return "User"+"\n"+
+        "id:" +super.getId()+"\n"+
+        "username: "+this.#username+"\n"+
+        "password: "+this.#password+"\n"+
+        "userDetails: "+this.#userdetails.map( userdetail => userdetail.toString())+"\n"
+
+  }
+  toJSON() {
     return {
+      id: super.getId(),
       username: this.#username,
       password: this.#password,
-      userdetails: this.#userdetails.map( (userdetails) => userdetails.getUserDetails())
+      dateCreated:super.getDate(),
+      userdetails: this.#userdetails.map( (userdetail) => userdetail.toJSON())
     }
   }
 

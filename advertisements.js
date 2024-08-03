@@ -1,12 +1,12 @@
-export default class Advertisement{
-  #id;
+import BaseEntity from "./BaseEntity.js";
+export default class Advertisement extends BaseEntity{
   #title
   #description;
   #category;
 
 
   constructor(id,title,description){
-  this.#id=id;
+  super(id);
   this.#title=title;
   this.#description=description;
   this.#category=null;
@@ -15,9 +15,7 @@ export default class Advertisement{
     this.#category=category;
     category.addAdvertisement(this);
   }
-  getId(){
-    return this.#id;
-  }
+
   getTitle(){
     return this.#title;
   }
@@ -29,4 +27,25 @@ export default class Advertisement{
    }
 
 
+
+ toJSON(){
+  return {
+   id:super.getId(),
+   title:this.#title,
+   description:this.#description,
+   dateCreated:super.getDate(),
+   category:this.#category.toJSON()
+
+  }
+
+ }
+
+ toString(){
+  return'Advertisement'+'\n'+
+  "id: "+super.getId() +"\n"+
+  "title: "+this.#title +"\n"+
+  "description: "+this.#description+"\n"+
+  "dateCreated: "+super.getDate()+"\n"+
+  this.#category.toString() ;
+  }
 }
