@@ -16,18 +16,4 @@ export default class BaseEntity {
   getDate() {
     return this.#dateCreated;
   }
-
-
-  // Method to return a string representation of the object
-  toString() {
-    return "id" + this.#id + "\n";
-  }
-
-
-  // Method to return a JSON representation of the object
-  toJSON() {
-    return {
-      id: this.#id
-    };
-  }
 }

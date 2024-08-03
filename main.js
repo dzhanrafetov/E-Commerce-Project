@@ -13,7 +13,7 @@ const us2_details = new UserDetails("2", "Dzhan", "Zekeriev", 2004, "Popovo,Bulg
 us1.addUserDetails(us1_details);
 us1.addUserDetails(us2_details);
 
-// console.log(us1.toJSON());
+console.log(us1.toJSON());
 // console.log(us1.toString());
 
 // console.log(us1.toJSON());
