@@ -1,5 +1,12 @@
 {
-  "name": "example-project",
+  "name": "my-fetch-project",
   "version": "1.0.0",
-  "type": "module"
+  "main": "FetchApi.js",
+  "type": "module",
+  "scripts": {
+    "start": "node FetchApi.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.0.0"
+  }
 }
